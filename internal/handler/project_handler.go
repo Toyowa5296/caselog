@@ -102,7 +102,8 @@ func (h *ProjectHandler) Edit(c *gin.Context) {
 	}
 
 	c.HTML(http.StatusOK, "edit.html", gin.H{
-		"project": project,
+		"Title":   "案件編集 | CaseLog",
+		"Project": project,
 	})
 }
 
