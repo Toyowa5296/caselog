@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Title }}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <div>
+        <h1>CaseLog</h1>
+        <p>フリーランス案件の条件・技術・選考状況を整理する小さなWebサービス</p>
+      </div>
+      <a class="button" href="/projects/new">案件を登録</a>
+    </header>
+
+    {{ if .Projects }}
+      <div class="project-list">
+        {{ range .Projects }}
+          <article class="project-card">
+            <div class="project-card__header">
+              <h2>{{ .Title }}</h2>
+              <span class="status">{{ call $.StatusLabel .Status }}</span>
+            </div>
+
+            <dl>
+              <div>
+                <dt>会社</dt>
+                <dd>{{ .Company }}</dd>
+              </div>
+              <div>
+                <dt>技術</dt>
+                <dd>{{ .MainSkill }}</dd>
+              </div>
+              <div>
+                <dt>単価</dt>
+                <dd>{{ .UnitPrice }}万円</dd>
+              </div>
+              <div>
+                <dt>リモート</dt>
+                <dd>{{ .RemoteType }}</dd>
+              </div>
+            </dl>
+            <a class="text-link" href="/projects/{{ .ID }}">詳細を見る</a>
+          </article>
+        {{ end }}
+      </div>
+    {{ else }}
+      <section class="empty">
+        <h2>まだ案件が登録されていません</h2>
+        <p>まずは気になる案件を1件登録してみましょう。</p>
+      </section>
+    {{ end }}
+  </main>
+</body>
+</html>

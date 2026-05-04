@@ -1,0 +1,5 @@
+caselog.db
+*.db
+*.sqlite
+*.sqlite3
+/app

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Title }}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <div>
+        <h1>{{ .Project.Title }}</h1>
+        <p>案件の詳細情報を確認します。</p>
+      </div>
+      <a class="button button-secondary" href="/">一覧へ戻る</a>
+    </header>
+
+    <section class="detail-card">
+      <div class="detail-card__header">
+        <div>
+          <h2>{{ .Project.Title }}</h2>
+          <p>{{ .Project.Company }}</p>
+        </div>
+        <span class="status">{{ call .StatusLabel .Project.Status }}</span>
+      </div>
+
+      <dl class="detail-list">
+        <div>
+          <dt>メイン技術</dt>
+          <dd>{{ .Project.MainSkill }}</dd>
+        </div>
+        <div>
+          <dt>単価</dt>
+          <dd>{{ .Project.UnitPrice }}万円</dd>
+        </div>
+        <div>
+          <dt>リモート条件</dt>
+          <dd>{{ .Project.RemoteType }}</dd>
+        </div>
+        <div>
+          <dt>チーム規模</dt>
+          <dd>{{ .Project.TeamSize }}</dd>
+        </div>
+      </dl>
+
+      <section class="notes-section">
+        <h3>メモ</h3>
+        {{ if .Project.Notes }}
+          <p>{{ .Project.Notes }}</p>
+        {{ else }}
+          <p class="muted">メモは登録されていません。</p>
+        {{ end }}
+      </section>
+    </section>
+  </main>
+</body>
+</html>

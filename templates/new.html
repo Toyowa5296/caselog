@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Title }}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <div>
+        <h1>案件登録</h1>
+        <p>気になる案件の条件やメモを登録します。</p>
+      </div>
+      <a class="button button-secondary" href="/">一覧へ戻る</a>
+    </header>
+
+    <form class="form-card" action="/projects" method="post">
+      <div class="form-grid">
+        <label>
+          <span>案件名</span>
+          <input type="text" name="title" required placeholder="例：Webサービス開発支援">
+        </label>
+
+        <label>
+          <span>会社名</span>
+          <input type="text" name="company" placeholder="例：株式会社〇〇">
+        </label>
+
+        <label>
+          <span>メイン技術</span>
+          <input type="text" name="main_skill" placeholder="例：Go / React / TypeScript">
+        </label>
+
+        <label>
+          <span>単価（万円）</span>
+          <input type="number" name="unit_price" min="0" placeholder="例：70">
+        </label>
+
+        <label>
+          <span>リモート条件</span>
+          <input type="text" name="remote_type" placeholder="例：フルリモート">
+        </label>
+
+        <label>
+          <span>チーム規模</span>
+          <input type="text" name="team_size" placeholder="例：3〜5名">
+        </label>
+
+        <label>
+          <span>ステータス</span>
+          <select name="status">
+            <option value="considering">検討中</option>
+            <option value="applied">応募済み</option>
+            <option value="interview">面談予定</option>
+            <option value="declined">見送り</option>
+            <option value="accepted">参画決定</option>
+          </select>
+        </label>
+
+        <label class="full">
+          <span>メモ</span>
+          <textarea name="notes" rows="5" placeholder="案件の印象、懸念点、確認したいことなど"></textarea>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button class="button" type="submit">登録する</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
