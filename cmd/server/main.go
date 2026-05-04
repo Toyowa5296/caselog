@@ -32,6 +32,7 @@ func main() {
 	r.GET("/projects/:id", projectHandler.Show)
 	r.GET("/projects/:id/edit", projectHandler.Edit)
 	r.POST("/projects/:id/update", projectHandler.Update)
+	r.POST("/projects/:id/delete", projectHandler.Delete)
 
 	// r.Run(":8080")
 	port := os.Getenv("PORT")

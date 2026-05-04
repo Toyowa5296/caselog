@@ -137,3 +137,18 @@ func (h *ProjectHandler) Update(c *gin.Context) {
 
 	c.Redirect(http.StatusSeeOther, fmt.Sprintf("/projects/%d", id))
 }
+
+func (h *ProjectHandler) Delete(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.String(http.StatusBadRequest, "Invalid project ID")
+		return
+	}
+
+	if err := h.Repo.Delete(id); err != nil {
+		c.String(http.StatusInternalServerError, "Failed to delete project")
+		return
+	}
+
+	c.Redirect(http.StatusSeeOther, "/")
+}

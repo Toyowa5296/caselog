@@ -55,6 +55,9 @@
           <p class="muted">メモは登録されていません。</p>
         {{ end }}
       </section>
+      <form action="/projects/{{ .Project.ID }}/delete" method="post" onsubmit="return confirm('この案件を削除しますか？');">
+        <button type="submit" class="danger-button">削除する</button>
+      </form>
     </section>
   </main>
 </body>

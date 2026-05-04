@@ -133,3 +133,10 @@ func (r *ProjectRepository) Update(project model.Project) error {
 
 	return err
 }
+
+func (r *ProjectRepository) Delete(id int) error {
+	query := `DELETE FROM projects WHERE id = ?`
+
+	_, err := r.DB.Exec(query, id)
+	return err
+}
