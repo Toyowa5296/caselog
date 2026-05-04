@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>案件編集 - CaseLog</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>案件編集</h1>
+
+    <form action="/projects/{{ .project.ID }}/update" method="post" class="form-card">
+      <div class="form-group">
+        <label>案件名</label>
+        <input type="text" name="title" value="{{ .project.Title }}" required>
+      </div>
+
+      <div class="form-group">
+        <label>会社名</label>
+        <input type="text" name="company" value="{{ .project.Company }}">
+      </div>
+
+      <div class="form-group">
+        <label>メイン技術</label>
+        <input type="text" name="main_skill" value="{{ .project.MainSkill }}">
+      </div>
+
+      <div class="form-group">
+        <label>単価（万円）</label>
+        <input type="number" name="unit_price" value="{{ .project.UnitPrice }}">
+      </div>
+
+      <div class="form-group">
+        <label>リモート条件</label>
+        <input type="text" name="remote_type" value="{{ .project.RemoteType }}">
+      </div>
+
+      <div class="form-group">
+        <label>チーム規模</label>
+        <input type="text" name="team_size" value="{{ .project.TeamSize }}">
+      </div>
+
+      <div class="form-group">
+        <label>ステータス</label>
+        <select name="status">
+          <option value="considering" {{ if eq .project.Status "considering" }}selected{{ end }}>検討中</option>
+          <option value="applied" {{ if eq .project.Status "applied" }}selected{{ end }}>応募済み</option>
+          <option value="interview" {{ if eq .project.Status "interview" }}selected{{ end }}>面談予定</option>
+          <option value="declined" {{ if eq .project.Status "declined" }}selected{{ end }}>見送り</option>
+          <option value="accepted" {{ if eq .project.Status "accepted" }}selected{{ end }}>参画決定</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>メモ</label>
+        <textarea name="notes" rows="6">{{ .project.Notes }}</textarea>
+      </div>
+
+      <div class="button-area">
+        <button type="submit">更新する</button>
+        <a href="/projects/{{ .Project.ID }}" class="secondary-link">詳細へ戻る</a>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

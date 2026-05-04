@@ -33,16 +33,56 @@ body {
   color: #6b7280;
 }
 
-.button {
+.button,
+.button-link,
+.button-area button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 12px 18px;
   border-radius: 999px;
-  background: #2563eb;
+  background: #64748b;
   color: #fff;
   font-weight: 700;
   text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.button:hover,
+.button-link:hover,
+.button-area button:hover {
+  background: #475569;
+}
+
+.button-primary {
+  background: #2563eb;
+}
+
+.button-primary:hover {
+  background: #1d4ed8;
+}
+
+.button-secondary {
+  background: #64748b;
+}
+
+.button-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.secondary-link {
+  color: #475569;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.secondary-link:hover {
+  text-decoration: underline;
 }
 
 .project-list {
@@ -115,10 +155,6 @@ dd {
   color: #6b7280;
 }
 
-.button-secondary {
-  background: #64748b;
-}
-
 .form-card {
   padding: 28px;
   border-radius: 20px;
@@ -132,9 +168,17 @@ dd {
   gap: 20px;
 }
 
-label {
+.form-group {
+  margin-bottom: 18px;
+}
+
+label,
+.form-group label {
   display: grid;
   gap: 8px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #0f172a;
 }
 
 label span {
@@ -145,16 +189,20 @@ label span {
 
 input,
 select,
-textarea {
+textarea,
+.form-group input,
+.form-group select,
+.form-group textarea {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #d1d5db;
+  border: 1px solid #cbd5e1;
   border-radius: 12px;
   font: inherit;
   background: #fff;
 }
 
-textarea {
+textarea,
+.form-group textarea {
   resize: vertical;
 }
 
@@ -166,6 +214,7 @@ textarea {
   margin-top: 24px;
   display: flex;
   justify-content: flex-end;
+  gap: 12px;
 }
 
 .text-link {
@@ -230,4 +279,33 @@ textarea {
 
 .muted {
   color: #6b7280;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-header h1 {
+    font-size: 32px;
+  }
+
+  dl,
+  .detail-list,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button-area,
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button,
+  .button-link,
+  .button-area button {
+    width: 100%;
+  }
 }

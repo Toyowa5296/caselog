@@ -101,3 +101,35 @@ func (r *ProjectRepository) FindByID(id int) (model.Project, error) {
 
 	return p, err
 }
+
+func (r *ProjectRepository) Update(project model.Project) error {
+	query := `
+		UPDATE projects
+		SET
+			title = ?,
+			company = ?,
+			main_skill = ?,
+			unit_price = ?,
+			remote_type = ?,
+			team_size = ?,
+			status = ?,
+			notes = ?,
+			updated_at = CURRENT_TIMESTAMP
+		WHERE id = ?
+	`
+
+	_, err := r.DB.Exec(
+		query,
+		project.Title,
+		project.Company,
+		project.MainSkill,
+		project.UnitPrice,
+		project.RemoteType,
+		project.TeamSize,
+		project.Status,
+		project.Notes,
+		project.ID,
+	)
+
+	return err
+}

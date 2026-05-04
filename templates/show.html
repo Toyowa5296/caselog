@@ -12,7 +12,11 @@
         <h1>{{ .Project.Title }}</h1>
         <p>案件の詳細情報を確認します。</p>
       </div>
-      <a class="button button-secondary" href="/">一覧へ戻る</a>
+
+      <div class="button-area">
+        <a class="button-link" href="/projects/{{ .Project.ID }}/edit">編集する</a>
+        <a class="button button-secondary" href="/">一覧へ戻る</a>
+      </div>
     </header>
 
     <section class="detail-card">
